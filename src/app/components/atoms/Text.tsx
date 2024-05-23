@@ -1,7 +1,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-const TextVariant = ['title', 'base', 'secondary'] as const;
+const TextVariant = ['title', 'base', 'secondary', 'label'] as const;
 
 type TextProps<T extends React.ElementType> = {
   as?: T;
@@ -29,6 +29,7 @@ const Text: React.ForwardRefExoticComponent<
           variant === 'title' && 'text-[24px] font-[700]',
           variant === 'secondary' &&
             'text-[14px] font-[500] text-opacity-[0.52]',
+          variant === 'label' && 'text-[13px] font-[500] text-opacity-[0.33]',
           'text-white',
           className
         )}

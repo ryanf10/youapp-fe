@@ -14,7 +14,7 @@ export default function Input({ className, type, ...rest }: InputProps) {
       {...rest}
       type={type}
       className={cn(
-        'bg-white-opacity-9 rounded-[9px] p-2 text-[13px] font-medium text-white placeholder-gray-500',
+        'bg-white-opacity-9 w-full rounded-[9px] p-2 text-[13px] font-medium text-white placeholder-gray-500',
         className
       )}
     />
