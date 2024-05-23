@@ -12,6 +12,7 @@ const config: Config = {
         'custom-bg-color': '#09141A',
         'button-gradient-start': '#62CDCB',
         'button-gradient-end': '#4599DB',
+        'white-opacity-9': 'rgba(255, 255, 255, 0.09)',
       },
       backgroundImage: {
         'custom-gradient':

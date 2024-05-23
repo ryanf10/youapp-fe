@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import Button from '@/app/components/atoms/Button';
 import Link from 'next/link';
+import Text from '@/app/components/atoms/Text';
+import Input from '@/app/components/atoms/Input';
 
 export default function Home() {
   return (
@@ -9,6 +11,10 @@ export default function Home() {
         <Link href='/login'>
           <Button variant='gradient'>Login</Button>
         </Link>
+        <Text as='h1' variant='secondary' className='mt-5'>
+          Register
+        </Text>
+        <Input className='mt-5 h-[51px] w-full p-[18px]'></Input>
       </div>
     </main>
   );
