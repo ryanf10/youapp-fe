@@ -57,7 +57,11 @@ export default function AboutUser() {
         )}
         {aboutState == 'form' && (
           <>
-            <FormProfile />
+            <FormProfile
+              handleBack={() => {
+                setAboutState('about');
+              }}
+            />
           </>
         )}
       </Card>

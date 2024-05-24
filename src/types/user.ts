@@ -8,4 +8,10 @@ export type User = {
   zodiac?: string;
   height?: number;
   weight?: number;
+  localProfile?: {
+    base64profile?: string;
+    gender?: string;
+    height_unit?: string;
+    weight_unit?: string;
+  };
 };

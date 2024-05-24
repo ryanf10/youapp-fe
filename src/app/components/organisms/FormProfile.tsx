@@ -15,8 +15,13 @@ import { useRef, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import Image from 'next/image';
 import SelectField from '@/app/components/molecules/SelectField';
+import { getProfileService } from '@/services/get-profile-service';
 
-export default function FormProfile() {
+type FormProfileProps = {
+  handleBack(): void;
+};
+export default function FormProfile({ handleBack }: FormProfileProps) {
+  const login = useAuthStore.useLogin();
   const user = useAuthStore.useUser();
   const localProfile = getLocalProfileFromLocalStorage();
 
@@ -32,7 +37,6 @@ export default function FormProfile() {
           const result = event.target.result;
           if (typeof result === 'string') {
             setImage(result);
-            console.log(result);
           }
         }
       };
@@ -102,7 +106,7 @@ export default function FormProfile() {
             toast.error('Please complete your profile');
           }
           if (user?.name == undefined) {
-            createProfileService(
+            const res = await createProfileService(
               values.name,
               values.gender,
               values.birthday,
@@ -113,8 +117,15 @@ export default function FormProfile() {
               user?.interests ?? [],
               image ?? undefined
             );
+            if (res.data.isSuccess) {
+              handleBack();
+              if (user) {
+                const profile = await getProfileService();
+                login({ ...user, ...profile.data.data });
+              }
+            }
           } else {
-            updateProfileService(
+            const res = await updateProfileService(
               values.name,
               values.gender,
               values.birthday,
@@ -125,6 +136,13 @@ export default function FormProfile() {
               user?.interests ?? [],
               image ?? undefined
             );
+            if (res.data.isSuccess) {
+              handleBack();
+              if (user) {
+                const profile = await getProfileService();
+                login({ ...user, ...profile.data.data });
+              }
+            }
           }
         }}
       >

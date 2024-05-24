@@ -36,6 +36,8 @@ export function setLocalProfileToLocalStorage(key: string, value: string) {
     }
     localProfile[key] = value;
     window.localStorage.setItem('profile', JSON.stringify(localProfile));
+    const event = new Event('localStorageUpdate');
+    window.dispatchEvent(event);
   }
 }
 
