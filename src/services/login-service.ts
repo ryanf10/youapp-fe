@@ -21,9 +21,19 @@ export const loginService = async (
         setToLocalStorage('access_token', response.data.access_token);
         response.data.isSuccess = true;
       } else {
+        console.log('kene');
         toast.error(response.data.message);
         response.data.isSuccess = false;
       }
       return response;
+    })
+    .catch((err) => {
+      toast.error(
+        Array.isArray(err.response.data.message)
+          ? err.response.data.message[0]
+          : err.response.data.message
+      );
+      err.response.data.isSuccess = false;
+      return err.response;
     });
 };
