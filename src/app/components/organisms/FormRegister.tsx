@@ -93,10 +93,10 @@ function FormRegister() {
         <Text as='span' className='text-[13px] font-[500]'>
           Have an account?
         </Text>{' '}
-        <Link href='/login'>
+        <Link href='/'>
           <Text
             as='span'
-            className='text-custom-yellow text-[13px] font-[500] underline'
+            className='bg-custom-text-gradient-1 bg-clip-text text-[13px] font-[500] text-transparent'
           >
             Login here
           </Text>

@@ -69,9 +69,9 @@ function FormLogin() {
         <Link href='/register'>
           <Text
             as='span'
-            className='text-custom-yellow text-[13px] font-[500]  underline'
+            className='bg-custom-text-gradient-1 bg-clip-text text-[13px] font-[500] text-transparent'
           >
-            Register here
+            Regsiter here
           </Text>
         </Link>
       </div>
