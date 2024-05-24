@@ -27,6 +27,7 @@ const useAuthStoreBase = create<AuthStoreType>((set) => ({
   },
   logout: () => {
     removeFromLocalStorage('access_token');
+    removeFromLocalStorage('profile');
   },
   stopLoading: () => {
     set(

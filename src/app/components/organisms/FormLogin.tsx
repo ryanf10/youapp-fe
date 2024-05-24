@@ -38,7 +38,8 @@ function FormLogin() {
         {({ values, errors, touched, validateField }) => (
           <Form>
             <InputField
-              className='mt-5 h-[51px] w-full p-[18px]'
+              containerClassName='mt-5'
+              className='h-[51px] w-full p-[18px]'
               name='email_or_username'
               placeholder='Enter Username/Email'
               label={null}
@@ -68,7 +69,7 @@ function FormLogin() {
         <Link href='/register'>
           <Text
             as='span'
-            className='text-[13px] font-[500] text-[#F3EDA6]  underline'
+            className='text-custom-yellow text-[13px] font-[500]  underline'
           >
             Register here
           </Text>

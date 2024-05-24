@@ -10,9 +10,11 @@ const config: Config = {
     extend: {
       colors: {
         'custom-bg-color': '#09141A',
+        'custom-bg-card-color': '#0E191F',
         'button-gradient-start': '#62CDCB',
         'button-gradient-end': '#4599DB',
         'white-opacity-9': 'rgba(255, 255, 255, 0.09)',
+        'custom-yellow': '#F3EDA6',
       },
       backgroundImage: {
         'custom-gradient':

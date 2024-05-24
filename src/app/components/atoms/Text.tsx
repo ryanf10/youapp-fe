@@ -24,6 +24,7 @@ const Text: React.ForwardRefExoticComponent<
     return (
       <Component
         ref={ref}
+        {...rest}
         className={cn(
           variant === 'base' && 'text-[14px] font-[700]',
           variant === 'title' && 'text-[24px] font-[700]',

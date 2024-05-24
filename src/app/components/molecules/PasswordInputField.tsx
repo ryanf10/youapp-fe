@@ -30,13 +30,16 @@ export default function PasswordInputField({
       )}
     >
       {withLabel && (
-        <Text as='label' variant='label' className='mr-1'>
-          {label}
-        </Text>
+        <div className='w-1/3'>
+          <Text as='label' variant='label' className='mr-1'>
+            {label}
+          </Text>
+        </div>
       )}
-      <div className='relative w-full'>
+      <div className='relative flex-1'>
         <Input {...field} {...rest} type={showPassword ? 'text' : 'password'} />
         <button
+          type='button'
           className='absolute right-0 top-1/3 mr-3'
           onClick={togglePassword}
         >

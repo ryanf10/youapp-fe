@@ -1,7 +1,7 @@
 import { localAxios } from '@/lib/axios';
 import { isEmail } from '@/lib/regex';
 import { toast } from 'react-hot-toast';
-import { setToLocalStorage } from '@/lib/helpers';
+import { removeFromLocalStorage, setToLocalStorage } from '@/lib/helpers';
 import { Simulate } from 'react-dom/test-utils';
 import error = Simulate.error;
 
@@ -19,9 +19,9 @@ export const loginService = async (
       if (response.data.access_token) {
         toast.success('Login successful');
         setToLocalStorage('access_token', response.data.access_token);
+        removeFromLocalStorage('profile');
         response.data.isSuccess = true;
       } else {
-        console.log('kene');
         toast.error(response.data.message);
         response.data.isSuccess = false;
       }

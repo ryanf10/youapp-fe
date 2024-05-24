@@ -2,24 +2,34 @@
 import Input, { InputProps } from '@/app/components/atoms/Input';
 import Text from '@/app/components/atoms/Text';
 import { useField } from 'formik';
+import { cn } from '@/lib/utils';
 
 type InputFieldProps = {
   name: string;
   label: string | null;
+  containerClassName?: string;
 } & InputProps;
 
-export default function InputField({ label, ...rest }: InputFieldProps) {
+export default function InputField({
+  label,
+  containerClassName,
+  ...rest
+}: InputFieldProps) {
   const [field] = useField(rest);
 
   const withLabel = label !== null;
   return (
-    <div className='ju flex'>
+    <div className={cn('flex items-center justify-center', containerClassName)}>
       {withLabel && (
-        <Text as='label' variant='label' className='mr-1'>
-          {label}
-        </Text>
+        <div className='w-1/3'>
+          <Text as='label' variant='label' className='mr-1'>
+            {label}
+          </Text>
+        </div>
       )}
-      <Input {...field} {...rest} />
+      <div className='flex-1'>
+        <Input {...field} {...rest} />
+      </div>
     </div>
   );
 }
