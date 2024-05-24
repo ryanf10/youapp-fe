@@ -1,6 +1,7 @@
 import FormLogin from '@/app/components/organisms/FormLogin';
 import Link from 'next/link';
 import { FiChevronLeft } from 'react-icons/fi';
+import Text from '@/app/components/atoms/Text';
 
 export default function LoginPage() {
   return (
@@ -12,7 +13,10 @@ export default function LoginPage() {
             Back
           </button>
         </Link>
-        <h2 className='ml-2 mt-16 text-2xl font-bold text-white'>Login</h2>
+
+        <Text as='h1' variant='title' className='ml-2 mt-16'>
+          Login
+        </Text>
 
         <FormLogin />
       </div>
