@@ -1,6 +1,6 @@
 {
-  "name": "My PWA",
-  "short_name": "PWA",
+  "name": "YouApp FE Test",
+  "short_name": "YouApp",
   "description": "My Progressive Web App",
   "start_url": "/",
   "display": "standalone",
