@@ -14,6 +14,7 @@ import { updateProfileService } from '@/services/update-profile-service';
 import { useRef, useState } from 'react';
 import { FiPlus } from 'react-icons/fi';
 import Image from 'next/image';
+import SelectField from '@/app/components/molecules/SelectField';
 
 export default function FormProfile() {
   const user = useAuthStore.useUser();
@@ -137,13 +138,16 @@ export default function FormProfile() {
               label='Display name:'
               type='text'
             />
-            <InputField
+            <SelectField
               containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
               name='gender'
-              placeholder='Select Gender'
               label='Gender'
-              type='text'
+              className='h-[36px] w-full text-right'
+              placeholder='Select Gender'
+              options={[
+                { label: 'Male', value: 'Male' },
+                { label: 'Female', value: 'Female' },
+              ]}
             />
             <InputField
               containerClassName='mt-3'

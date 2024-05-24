@@ -21,7 +21,9 @@ export default function UserPicture() {
         )}
         <div className='absolute bottom-5 left-5'>
           <Text as='h1' className=''>{`@${user?.username}`}</Text>
-          <Text as='h1' className=''>{`${localProfile?.gender}`}</Text>
+          {localProfile?.gender && (
+            <Text as='h1' className=''>{`${localProfile.gender}`}</Text>
+          )}
         </div>
       </Card>
     </>
