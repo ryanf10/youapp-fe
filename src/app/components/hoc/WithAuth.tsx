@@ -7,9 +7,10 @@ import React from 'react';
 import axios from '@/lib/axios';
 import { toast } from 'react-hot-toast';
 import { getProfileService } from '@/services/get-profile-service';
+import PageLoader from '@/app/components/molecules/PageLoader';
 
 const HOME_ROUTE = '/home';
-const LOGIN_ROUTE = '/login';
+const LOGIN_ROUTE = '/';
 
 enum RouteRole {
   /**
@@ -115,7 +116,11 @@ export default function WithAuth<T extends WithAuthProps = WithAuthProps>(
       // auth pages and optional pages are allowed to access without login
       routeRole !== 'without'
     ) {
-      return <>Loading...</>;
+      return (
+        <>
+          <PageLoader />
+        </>
+      );
     }
 
     return <Component {...(props as T)} user={user} />;

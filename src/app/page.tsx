@@ -1,24 +1,20 @@
-'use client';
-import Image from 'next/image';
-import Button from '@/app/components/atoms/Button';
+import FormLogin from '@/app/components/organisms/FormLogin';
 import Link from 'next/link';
-import Text from '@/app/components/atoms/Text';
-import Input from '@/app/components/atoms/Input';
-import InputField from '@/app/components/molecules/InputField';
-import { Formik } from 'formik';
-import PasswordInputField from '@/app/components/molecules/PasswordInputField';
+import { FiChevronLeft } from 'react-icons/fi';
 
-export default function Home() {
+export default function LoginPage() {
   return (
-    <main className='bg-custom-gradient flex min-h-screen flex-col items-center justify-between'>
-      <div className='mt-16 w-4/5'>
-        <Link href='/login'>
-          <Button variant='gradient'>Login</Button>
+    <main className='bg-custom-gradient min-h-screen w-full p-4'>
+      <div className='mx-auto w-full max-w-md'>
+        <Link href='/'>
+          <button className='my-4 flex items-center justify-center text-white'>
+            <FiChevronLeft />
+            Back
+          </button>
         </Link>
-        <Text as='h1' variant='secondary' className='mt-5'>
-          Register
-        </Text>
-        <Input className='mt-5 h-[51px] w-full p-[18px]'></Input>
+        <h2 className='ml-2 mt-16 text-2xl font-bold text-white'>Login</h2>
+
+        <FormLogin />
       </div>
     </main>
   );
