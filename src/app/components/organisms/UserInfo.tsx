@@ -1,3 +1,4 @@
+'use client';
 import { useState } from 'react';
 import AboutUser from '@/app/components/organisms/AboutUser';
 import Text from '@/app/components/atoms/Text';
@@ -5,8 +6,10 @@ import useAuthStore from '@/store/useAuthStore';
 import UserPicture from '@/app/components/organisms/UserPicture';
 import Interest from '@/app/components/organisms/Interest';
 import BackLink from '@/app/components/molecules/BackLink';
+import WithAuth from '@/app/components/hoc/WithAuth';
 
-export default function UserInfo() {
+export default WithAuth(UserInfo, 'required');
+function UserInfo() {
   const user = useAuthStore.useUser();
   return (
     <div className='mx-auto max-w-md'>

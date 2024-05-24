@@ -1,6 +1,4 @@
 import FormLogin from '@/app/components/organisms/FormLogin';
-import Link from 'next/link';
-import { FiChevronLeft } from 'react-icons/fi';
 import Text from '@/app/components/atoms/Text';
 import BackLink from '@/app/components/molecules/BackLink';
 

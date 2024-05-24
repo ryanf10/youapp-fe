@@ -1,8 +1,12 @@
 import FormRegister from '@/app/components/organisms/FormRegister';
-import Link from 'next/link';
-import { FiChevronLeft } from 'react-icons/fi';
 import Text from '@/app/components/atoms/Text';
 import BackLink from '@/app/components/molecules/BackLink';
+import type { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Register | YouApp Test',
+  description: "Let's explore the world",
+};
 
 export default function RegisterPage() {
   return (

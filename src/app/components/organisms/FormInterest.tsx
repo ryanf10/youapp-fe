@@ -1,3 +1,4 @@
+'use client';
 import useAuthStore from '@/store/useAuthStore';
 import { useState } from 'react';
 import { TagsInput } from 'react-tag-input-component';
@@ -7,8 +8,10 @@ import { updateProfileService } from '@/services/update-profile-service';
 import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
 import { getProfileService } from '@/services/get-profile-service';
 import { useRouter } from 'next/navigation';
+import WithAuth from '@/app/components/hoc/WithAuth';
 
-export default function FormInterest() {
+export default WithAuth(FormInterest, 'required');
+function FormInterest() {
   const router = useRouter();
   const user = useAuthStore.useUser();
   const login = useAuthStore.useLogin();
