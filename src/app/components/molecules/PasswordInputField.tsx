@@ -44,9 +44,9 @@ export default function PasswordInputField({
           onClick={togglePassword}
         >
           {showPassword ? (
-            <HiEye className='text-typo-icons hover:text-typo-secondary cursor-pointer text-xl dark:text-gray-500' />
+            <HiEye className='text-typo-icons hover:text-typo-secondary cursor-pointer text-xl' />
           ) : (
-            <HiEyeOff className='text-typo-icons hover:text-typo-secondary cursor-pointer text-xl dark:text-gray-500' />
+            <HiEyeOff className='text-typo-icons hover:text-typo-secondary cursor-pointer text-xl' />
           )}
         </button>
       </div>
