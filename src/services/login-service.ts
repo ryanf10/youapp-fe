@@ -2,8 +2,6 @@ import { localAxios } from '@/lib/axios';
 import { isEmail } from '@/lib/regex';
 import { toast } from 'react-hot-toast';
 import { removeFromLocalStorage, setToLocalStorage } from '@/lib/helpers';
-import { Simulate } from 'react-dom/test-utils';
-import error = Simulate.error;
 
 export const loginService = async (
   email_or_username: string,

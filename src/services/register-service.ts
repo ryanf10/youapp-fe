@@ -1,9 +1,5 @@
 import { localAxios } from '@/lib/axios';
-import { isEmail } from '@/lib/regex';
 import { toast } from 'react-hot-toast';
-import { setToLocalStorage } from '@/lib/helpers';
-import { Simulate } from 'react-dom/test-utils';
-import error = Simulate.error;
 
 export const registerService = async (
   email: string,
