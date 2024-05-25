@@ -1,7 +1,8 @@
-import { localAxios } from '@/lib/axios';
-import { isEmail } from '@/lib/regex';
 import { toast } from 'react-hot-toast';
+
+import { localAxios } from '@/lib/axios';
 import { removeFromLocalStorage, setToLocalStorage } from '@/lib/helpers';
+import { isEmail } from '@/lib/regex';
 
 export const loginService = async (
   email_or_username: string,

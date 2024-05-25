@@ -1,20 +1,22 @@
 'use client';
+import { Form, Formik } from 'formik';
+import Link from 'next/link';
+import { useState } from 'react';
+
+import useAuthStore from '@/store/useAuthStore';
+
+import Button from '@/app/components/atoms/Button';
+import Text from '@/app/components/atoms/Text';
+import WithAuth from '@/app/components/hoc/WithAuth';
 import InputField from '@/app/components/molecules/InputField';
 import PasswordInputField from '@/app/components/molecules/PasswordInputField';
-import { Form, Formik } from 'formik';
-import Button from '@/app/components/atoms/Button';
-import { isEmail } from '@/lib/regex';
-import { loginService } from '@/services/login-service';
-import { useRouter } from 'next/navigation';
-import useAuthStore from '@/store/useAuthStore';
 import { getProfileService } from '@/services/get-profile-service';
-import WithAuth from '@/app/components/hoc/WithAuth';
-import Text from '@/app/components/atoms/Text';
-import Link from 'next/link';
+import { loginService } from '@/services/login-service';
 
 export default WithAuth(FormLogin, 'without');
 function FormLogin() {
   const login = useAuthStore.useLogin();
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   return (
     <>
       <Formik
@@ -23,6 +25,7 @@ function FormLogin() {
           password: '',
         }}
         onSubmit={async (values) => {
+          setIsLoading(true);
           const res = await loginService(
             values.email_or_username,
             values.password
@@ -33,9 +36,10 @@ function FormLogin() {
               login({ ...profile.data.data });
             }
           }
+          setIsLoading(false);
         }}
       >
-        {({ values, errors, touched, validateField }) => (
+        {({ values }) => (
           <Form>
             <InputField
               containerClassName='mt-5'
@@ -56,6 +60,7 @@ function FormLogin() {
               variant='gradient'
               className='mt-5 h-[51px]'
               disabled={values.email_or_username == '' || values.password == ''}
+              isLoading={isLoading}
             >
               Login
             </Button>
@@ -71,7 +76,7 @@ function FormLogin() {
             as='span'
             className='bg-custom-text-gradient-1 bg-clip-text text-[13px] font-[500] text-transparent'
           >
-            Regsiter here
+            Register here
           </Text>
         </Link>
       </div>

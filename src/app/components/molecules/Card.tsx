@@ -1,6 +1,8 @@
-import Text from '@/app/components/atoms/Text';
 import React from 'react';
+
 import { cn } from '@/lib/utils';
+
+import Text from '@/app/components/atoms/Text';
 
 type CardProps = {
   cardTitle: string | null;

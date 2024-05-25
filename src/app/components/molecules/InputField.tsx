@@ -1,8 +1,10 @@
 'use client';
+import { useField } from 'formik';
+
+import { cn } from '@/lib/utils';
+
 import Input, { InputProps } from '@/app/components/atoms/Input';
 import Text from '@/app/components/atoms/Text';
-import { useField } from 'formik';
-import { cn } from '@/lib/utils';
 
 type InputFieldProps = {
   name: string;

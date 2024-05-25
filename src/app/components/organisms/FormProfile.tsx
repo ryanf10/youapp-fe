@@ -1,21 +1,19 @@
 import { Form, Formik } from 'formik';
-import InputField from '@/app/components/molecules/InputField';
-import PasswordInputField from '@/app/components/molecules/PasswordInputField';
-import Button from '@/app/components/atoms/Button';
-import Text from '@/app/components/atoms/Text';
-import useAuthStore from '@/store/useAuthStore';
-import { createProfileService } from '@/services/create-profile-service';
-import { toast } from 'react-hot-toast';
-import {
-  getFromLocalStorage,
-  getLocalProfileFromLocalStorage,
-} from '@/lib/helpers';
-import { updateProfileService } from '@/services/update-profile-service';
-import { useRef, useState } from 'react';
-import { FiPlus } from 'react-icons/fi';
 import Image from 'next/image';
+import { useRef, useState } from 'react';
+import { toast } from 'react-hot-toast';
+import { FiPlus } from 'react-icons/fi';
+
+import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
+
+import useAuthStore from '@/store/useAuthStore';
+
+import Text from '@/app/components/atoms/Text';
+import InputField from '@/app/components/molecules/InputField';
 import SelectField from '@/app/components/molecules/SelectField';
+import { createProfileService } from '@/services/create-profile-service';
 import { getProfileService } from '@/services/get-profile-service';
+import { updateProfileService } from '@/services/update-profile-service';
 
 type FormProfileProps = {
   handleBack(): void;
@@ -213,7 +211,8 @@ export default function FormProfile({ handleBack }: FormProfileProps) {
             <Text
               as='button'
               type='submit'
-              className='text-custom-yellow absolute right-8 top-8 text-[13px] font-[500] disabled:cursor-not-allowed'
+              className='absolute right-8 top-8 text-[13px] font-[500] disabled:cursor-not-allowed'
+              variant='gradient-yellow'
               disabled={
                 values.name == '' ||
                 values.birthday == '' ||

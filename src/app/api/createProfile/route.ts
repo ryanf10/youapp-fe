@@ -1,6 +1,7 @@
-import axios from '@/lib/axios';
-import { NextResponse } from 'next/server';
 import { AxiosError } from 'axios';
+import { NextResponse } from 'next/server';
+
+import axios from '@/lib/axios';
 
 export async function POST(req: Request) {
   const token = await req.headers.get('x-access-token');

@@ -1,8 +1,10 @@
 import { createSelectorHooks } from 'auto-zustand-selectors-hook';
 import { produce } from 'immer';
 import { create } from 'zustand';
-import { User } from '@/types/user';
+
 import { removeFromLocalStorage } from '@/lib/helpers';
+
+import { User } from '@/types/user';
 
 type AuthStoreType = {
   user: User | null;

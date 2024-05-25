@@ -1,13 +1,16 @@
-import useAuthStore from '@/store/useAuthStore';
 import { usePathname, useSearchParams } from 'next/navigation';
 import { useRouter } from 'next/navigation';
-import { User } from '@/types/user';
-import { getFromLocalStorage } from '@/lib/helpers';
 import React from 'react';
-import axios from '@/lib/axios';
 import { toast } from 'react-hot-toast';
-import { getProfileService } from '@/services/get-profile-service';
+
+import { getFromLocalStorage } from '@/lib/helpers';
+
+import useAuthStore from '@/store/useAuthStore';
+
 import PageLoader from '@/app/components/molecules/PageLoader';
+import { getProfileService } from '@/services/get-profile-service';
+
+import { User } from '@/types/user';
 
 const HOME_ROUTE = '/home';
 const LOGIN_ROUTE = '/';
@@ -31,8 +34,7 @@ export interface WithAuthProps {
 
 export default function WithAuth<T extends WithAuthProps = WithAuthProps>(
   Component: React.ComponentType<T>,
-  routeRole: keyof typeof RouteRole,
-  allowedRoles?: Array<'admin' | 'user'>
+  routeRole: keyof typeof RouteRole
 ) {
   const ComponentWithAuth = (props: Omit<T, keyof WithAuthProps>) => {
     const router = useRouter();

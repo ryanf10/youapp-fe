@@ -1,6 +1,6 @@
 'use client';
-import axios, { localAxios } from '@/lib/axios';
-import { getFromLocalStorage, setToLocalStorage } from '@/lib/helpers';
+import { localAxios } from '@/lib/axios';
+import { getFromLocalStorage } from '@/lib/helpers';
 
 export const getProfileService = async () => {
   const token = getFromLocalStorage('access_token');

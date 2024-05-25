@@ -1,5 +1,6 @@
-import { localAxios } from '@/lib/axios';
 import { toast } from 'react-hot-toast';
+
+import { localAxios } from '@/lib/axios';
 
 export const registerService = async (
   email: string,

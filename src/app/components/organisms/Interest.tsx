@@ -1,8 +1,10 @@
 import { CiEdit } from 'react-icons/ci';
-import Text from '@/app/components/atoms/Text';
-import Card from '@/app/components/molecules/Card';
+
 import useAuthStore from '@/store/useAuthStore';
-import Link from 'next/link';
+
+import Text from '@/app/components/atoms/Text';
+import ButtonLink from '@/app/components/molecules/ButtonLink';
+import Card from '@/app/components/molecules/Card';
 
 export default function Interest() {
   const user = useAuthStore.useUser();
@@ -10,9 +12,7 @@ export default function Interest() {
     <>
       <Card cardTitle='Interest' className='mt-5 p-8'>
         <div className='absolute right-5 top-8 h-[18px] w-[18px]'>
-          <Link href='/interest'>
-            <CiEdit className='text-[18px]' />
-          </Link>
+          <ButtonLink href='/interest' leftIcon={CiEdit} className='my-0' />
         </div>
         {user?.interests.length == 0 && (
           <Text variant='secondary' className='mt-5'>

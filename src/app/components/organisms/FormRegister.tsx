@@ -1,18 +1,21 @@
 'use client';
+import { Form, Formik } from 'formik';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { toast } from 'react-hot-toast';
+
+import Button from '@/app/components/atoms/Button';
+import Text from '@/app/components/atoms/Text';
+import WithAuth from '@/app/components/hoc/WithAuth';
 import InputField from '@/app/components/molecules/InputField';
 import PasswordInputField from '@/app/components/molecules/PasswordInputField';
-import { Form, Formik } from 'formik';
-import Button from '@/app/components/atoms/Button';
-import { useRouter } from 'next/navigation';
-import WithAuth from '@/app/components/hoc/WithAuth';
-import Text from '@/app/components/atoms/Text';
-import Link from 'next/link';
 import { registerService } from '@/services/register-service';
-import { toast } from 'react-hot-toast';
 
 export default WithAuth(FormRegister, 'without');
 function FormRegister() {
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
   return (
     <>
       <Formik
@@ -27,6 +30,7 @@ function FormRegister() {
             toast.error("Confirm password doesn't match");
             return;
           }
+          setIsLoading(true);
           const res = await registerService(
             values.email,
             values.username,
@@ -35,9 +39,10 @@ function FormRegister() {
           if (res.data.isSuccess) {
             router.push('/');
           }
+          setIsLoading(false);
         }}
       >
-        {({ values, errors, touched, validateField }) => (
+        {({ values }) => (
           <Form>
             <InputField
               containerClassName='mt-5'
@@ -79,6 +84,7 @@ function FormRegister() {
                 values.password == '' ||
                 values.confirm_password == ''
               }
+              isLoading={isLoading}
             >
               Register
             </Button>

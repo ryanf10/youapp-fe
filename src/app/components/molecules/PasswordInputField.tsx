@@ -1,10 +1,12 @@
 'use client';
-import Input, { InputProps } from '@/app/components/atoms/Input';
-import Text from '@/app/components/atoms/Text';
 import { useField } from 'formik';
-import { cn } from '@/lib/utils';
 import { useState } from 'react';
 import { HiEye, HiEyeOff } from 'react-icons/hi';
+
+import { cn } from '@/lib/utils';
+
+import Input, { InputProps } from '@/app/components/atoms/Input';
+import Text from '@/app/components/atoms/Text';
 
 type PasswordInputFieldProps = {
   name: string;

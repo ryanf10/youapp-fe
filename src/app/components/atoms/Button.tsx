@@ -1,8 +1,13 @@
 import React from 'react';
+
 import { cn } from '@/lib/utils';
 
+import Loader from '@/app/components/atoms/Loader';
+
+const ButtonVariant = ['base', 'gradient'] as const;
 type ButtonProps = {
-  variant: 'base' | 'gradient';
+  variant: (typeof ButtonVariant)[number];
+  isLoading?: boolean;
 } & React.ComponentPropsWithRef<'button'>;
 
 export default function Button({
@@ -10,6 +15,8 @@ export default function Button({
   type,
   variant,
   className,
+  isLoading,
+  disabled,
   ...rest
 }: ButtonProps) {
   return (
@@ -22,10 +29,19 @@ export default function Button({
           'from-button-gradient-start to-button-gradient-end bg-gradient-to-r',
         className
       )}
+      disabled={isLoading || disabled}
     >
-      {children}
-      {rest.disabled && (
-        <div className='absolute inset-0 rounded-[8px] bg-gray-500 opacity-50'></div>
+      {isLoading ? (
+        <div className='flex items-center justify-center'>
+          <Loader />
+        </div>
+      ) : (
+        <>
+          {children}
+          {(disabled || isLoading) && (
+            <div className='absolute inset-0 rounded-[8px] bg-gray-500 opacity-50'></div>
+          )}
+        </>
       )}
     </button>
   );

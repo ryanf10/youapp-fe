@@ -1,14 +1,18 @@
 'use client';
-import useAuthStore from '@/store/useAuthStore';
-import { useState } from 'react';
-import { TagsInput } from 'react-tag-input-component';
-import Text from '@/app/components/atoms/Text';
-import BackLink from '@/app/components/molecules/BackLink';
-import { updateProfileService } from '@/services/update-profile-service';
-import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
-import { getProfileService } from '@/services/get-profile-service';
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
+import { FiChevronLeft } from 'react-icons/fi';
+import { TagsInput } from 'react-tag-input-component';
+
+import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
+
+import useAuthStore from '@/store/useAuthStore';
+
+import Text from '@/app/components/atoms/Text';
 import WithAuth from '@/app/components/hoc/WithAuth';
+import ButtonLink from '@/app/components/molecules/ButtonLink';
+import { getProfileService } from '@/services/get-profile-service';
+import { updateProfileService } from '@/services/update-profile-service';
 
 export default WithAuth(FormInterest, 'required');
 function FormInterest() {
@@ -44,7 +48,7 @@ function FormInterest() {
   return (
     <div className='mx-auto max-w-md'>
       <div className='flex items-center justify-between'>
-        <BackLink href='/home' />
+        <ButtonLink href='/home' leftIcon={FiChevronLeft} text='Back' />
         <Text
           as='button'
           className='bg-custom-text-gradient-2 bg-clip-text text-transparent'

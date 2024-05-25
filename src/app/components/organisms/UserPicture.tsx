@@ -1,13 +1,16 @@
-import Card from '@/app/components/molecules/Card';
-import Text from '@/app/components/atoms/Text';
-import useAuthStore from '@/store/useAuthStore';
-import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 
+import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
+
+import useAuthStore from '@/store/useAuthStore';
+
+import Text from '@/app/components/atoms/Text';
+import Card from '@/app/components/molecules/Card';
+
 export default function UserPicture() {
   const user = useAuthStore.useUser();
-  const [localProfile, setLocalProfile] = useState<any>();
+  const [localProfile, setLocalProfile] = useState<{ [k in string]: string }>();
 
   useEffect(() => {
     // Function to read the profile from localStorage

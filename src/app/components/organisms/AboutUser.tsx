@@ -1,15 +1,14 @@
-import Card from '@/app/components/molecules/Card';
-import useAuthStore from '@/store/useAuthStore';
-import Text from '@/app/components/atoms/Text';
-import { FiEdit, FiPenTool } from 'react-icons/fi';
-import { FaPencil } from 'react-icons/fa6';
-import { CiEdit } from 'react-icons/ci';
 import { useState } from 'react';
+import { CiEdit } from 'react-icons/ci';
+
+import { getLocalProfileFromLocalStorage } from '@/lib/helpers';
+
+import useAuthStore from '@/store/useAuthStore';
+
+import Text from '@/app/components/atoms/Text';
+import ButtonLink from '@/app/components/molecules/ButtonLink';
+import Card from '@/app/components/molecules/Card';
 import FormProfile from '@/app/components/organisms/FormProfile';
-import {
-  getFromLocalStorage,
-  getLocalProfileFromLocalStorage,
-} from '@/lib/helpers';
 
 export default function AboutUser() {
   const [aboutState, setAboutState] = useState<'about' | 'form'>('about');
@@ -21,8 +20,10 @@ export default function AboutUser() {
         {aboutState == 'about' && (
           <>
             <div className='absolute right-5 top-8 h-[18px] w-[18px]'>
-              <CiEdit
-                className='text-[18px]'
+              <ButtonLink
+                href='#'
+                leftIcon={CiEdit}
+                className='my-0'
                 onClick={() => setAboutState('form')}
               />
             </div>

@@ -1,8 +1,10 @@
 'use client';
-import Text from '@/app/components/atoms/Text';
 import { useField, useFormikContext } from 'formik';
+import Select, { Props as SelectProps, StylesConfig } from 'react-select';
+
 import { cn } from '@/lib/utils';
-import Select, { StylesConfig, Props as SelectProps } from 'react-select';
+
+import Text from '@/app/components/atoms/Text';
 
 type SelectFieldProps = {
   name: string;

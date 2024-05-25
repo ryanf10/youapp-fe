@@ -1,6 +1,6 @@
-import FormInterest from '@/app/components/organisms/FormInterest';
-
 import type { Metadata } from 'next';
+
+import FormInterest from '@/app/components/organisms/FormInterest';
 
 export const metadata: Metadata = {
   title: 'Interest | YouApp Test',
