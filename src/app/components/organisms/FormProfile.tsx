@@ -1,6 +1,6 @@
 import { Form, Formik } from 'formik';
 import Image from 'next/image';
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { toast } from 'react-hot-toast';
 import { FiPlus } from 'react-icons/fi';
 
@@ -14,6 +14,8 @@ import SelectField from '@/app/components/molecules/SelectField';
 import { createProfileService } from '@/services/create-profile-service';
 import { getProfileService } from '@/services/get-profile-service';
 import { updateProfileService } from '@/services/update-profile-service';
+import { getZodiac } from '@/lib/zodiac';
+import { getHoroscope } from '@/lib/horoscope';
 
 type FormProfileProps = {
   handleBack(): void;
@@ -144,86 +146,93 @@ export default function FormProfile({ handleBack }: FormProfileProps) {
           }
         }}
       >
-        {({ values }) => (
-          <Form>
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='name'
-              placeholder='Enter name'
-              label='Display name:'
-              type='text'
-            />
-            <SelectField
-              containerClassName='mt-3'
-              name='gender'
-              label='Gender'
-              className='h-[36px] w-full text-right'
-              placeholder='Select Gender'
-              options={[
-                { label: 'Male', value: 'Male' },
-                { label: 'Female', value: 'Female' },
-              ]}
-            />
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='birthday'
-              placeholder='DD MM YYYY'
-              label='Birthday'
-              type='text'
-            />
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='horoscope'
-              placeholder='--'
-              label='Horoscope:'
-              type='text'
-              disabled={true}
-            />
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='zodiac'
-              placeholder='--'
-              label='Zodiac:'
-              type='text'
-              disabled={true}
-            />
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='height'
-              placeholder='Add Height'
-              label='Height:'
-              type='text'
-            />
-            <InputField
-              containerClassName='mt-3'
-              className='h-[36px] w-full p-[18px] text-right'
-              name='weight'
-              placeholder='Add Weight'
-              label='Weight'
-              type='text'
-            />
+        {({ values, setFieldValue }) => {
+          // eslint-disable-next-line react-hooks/rules-of-hooks
+          useEffect(() => {
+            setFieldValue('horoscope', getHoroscope(values.birthday));
+            setFieldValue('zodiac', getZodiac(values.birthday));
+          }, [setFieldValue, values.birthday]);
+          return (
+            <Form>
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='name'
+                placeholder='Enter name'
+                label='Display name:'
+                type='text'
+              />
+              <SelectField
+                containerClassName='mt-3'
+                name='gender'
+                label='Gender'
+                className='h-[36px] w-full text-right'
+                placeholder='Select Gender'
+                options={[
+                  { label: 'Male', value: 'Male' },
+                  { label: 'Female', value: 'Female' },
+                ]}
+              />
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='birthday'
+                placeholder='DD MM YYYY'
+                label='Birthday'
+                type='text'
+              />
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='horoscope'
+                placeholder='--'
+                label='Horoscope:'
+                type='text'
+                disabled={true}
+              />
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='zodiac'
+                placeholder='--'
+                label='Zodiac:'
+                type='text'
+                disabled={true}
+              />
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='height'
+                placeholder='Add Height'
+                label='Height:'
+                type='text'
+              />
+              <InputField
+                containerClassName='mt-3'
+                className='h-[36px] w-full p-[18px] text-right'
+                name='weight'
+                placeholder='Add Weight'
+                label='Weight'
+                type='text'
+              />
 
-            <Text
-              as='button'
-              type='submit'
-              className='absolute right-8 top-8 text-[13px] font-[500] disabled:cursor-not-allowed'
-              variant='gradient-yellow'
-              disabled={
-                values.name == '' ||
-                values.birthday == '' ||
-                values.height == '' ||
-                values.weight == ''
-              }
-            >
-              Save & Update
-            </Text>
-          </Form>
-        )}
+              <Text
+                as='button'
+                type='submit'
+                className='absolute right-8 top-8 text-[13px] font-[500] disabled:cursor-not-allowed'
+                variant='gradient-yellow'
+                disabled={
+                  values.name == '' ||
+                  values.birthday == '' ||
+                  values.height == '' ||
+                  values.weight == ''
+                }
+              >
+                Save & Update
+              </Text>
+            </Form>
+          );
+        }}
       </Formik>
     </>
   );
