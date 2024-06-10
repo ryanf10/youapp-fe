@@ -69,8 +69,15 @@ export default function WithAuth<T extends WithAuthProps = WithAuthProps>(
             ...res.data.data,
           });
         } catch (err) {
-          toast.error((err as Error).message);
-          logout();
+          const cachedResponse = await caches.match('/api/getProfile');
+          if (cachedResponse) {
+            const res = await cachedResponse.json();
+            login({
+              ...res.data.data,
+            });
+          }
+          // toast.error((err as Error).message);
+          // logout();
         } finally {
           stopLoading();
         }
